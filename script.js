@@ -14,6 +14,12 @@ const createScene = function() {
   
   const light = new BABYLON.HemisphericLight('light', new BABYLON.Vector3(0, 2, 0))
   
+  buildDwellings()
+
+  return scene
+}
+
+const buildDwellings = () => {
   const ground = buildGround()
   
   const detached_house = buildHouse(1)
@@ -55,8 +61,6 @@ const createScene = function() {
     house.position.x = x
     house.position.z = z
   })
-
-  return scene
 }
 
 // Build functions
@@ -123,3 +127,6 @@ engine.runRenderLoop(function() {
 window.addEventListener('resize', function() {
   engine.resize()
 })
+
+// GENERATES .glb file
+// BABYLON.GLTF2Export.GLBAsync(scene, 'village.glb').then(glb => glb.downloadFiles())
